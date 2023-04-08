@@ -13,7 +13,7 @@ const getCategorias = async (req, res) => {
 const createCategoria = async (req, res) => {
     try {
 
-        const { nombre, comentario: descripcion } = req.body;
+        const { nombre,  descripcion } = req.body;
 
         const result = await pool.query(
             "INSERT INTO categorias(nombre, descripcion) VALUES (?, ?)",
