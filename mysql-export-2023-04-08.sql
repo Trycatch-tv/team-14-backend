@@ -3,7 +3,7 @@ CREATE TABLE `directores`(
     `nombres` VARCHAR(50) NOT NULL,
     `apellidos` VARCHAR(50) NOT NULL,
     `pais` VARCHAR(2) NOT NULL,
-    `fecha_nacimiento` TIMESTAMP NOT NULL
+    `fecha_nacimiento` DATE NOT NULL
 );
 CREATE TABLE `pelicula_genero`(
     `id_pelicula_genero` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -48,7 +48,7 @@ CREATE TABLE `usuarios`(
     `nombres` VARCHAR(50) NOT NULL,
     `apellidos` VARCHAR(50) NOT NULL,
     `pais` VARCHAR(2) NOT NULL,
-    `fecha_nacimiento` TIMESTAMP NOT NULL
+    `fecha_nacimiento` DATE NOT NULL
 );
 
 CREATE TABLE `pelicula_director`(
