@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {getResenas,createResena,getResena,updateResena,deleteResena } from "../controllers/resenias.controller.js";
+import {getResenas,createResena,getResena,updateResena,deleteResena } from "../controllers/resenas.controller.js";
 
 const router = Router();
 
