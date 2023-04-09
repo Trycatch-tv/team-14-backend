@@ -4,9 +4,9 @@ import pool from '../db/dbConfig.js'
 
 const getResenas = async (req, res) => {
 
-    const [resenas] = await pool.query("SELECT * FROM resenias")
+    const [resenas] = await pool.query("SELECT resenias.*, usuarios.nombres AS nombre_usuario, usuarios.apellidos AS apellido_usuario, peliculas.titulo AS titulo_pelicula FROM resenias LEFT JOIN usuarios ON resenias.id_usuario = usuarios.id_usuario LEFT JOIN peliculas ON resenias.id_pelicula = peliculas.id_pelicula");
 
-    res.json(resenas)
+    res.json(resenas);
 }
 
 
