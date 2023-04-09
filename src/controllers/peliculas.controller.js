@@ -3,9 +3,34 @@ import pool from '../db/dbConfig.js'
 
 
 const getPeliculas = async (req, res) => {
+    const [peliculas] = await pool.query(`
+    SELECT peliculas.*, 
+    GROUP_CONCAT(DISTINCT categorias.nombre SEPARATOR ', ') AS categorias,
+    GROUP_CONCAT(DISTINCT generos.nombre SEPARATOR ', ') AS generos,
+    GROUP_CONCAT(DISTINCT CONCAT(directores.nombres, ' ', directores.apellidos) SEPARATOR ', ') AS directores
+FROM peliculas
+LEFT JOIN pelicula_categoria ON peliculas.id_pelicula = pelicula_categoria.id_pelicula
+LEFT JOIN categorias ON pelicula_categoria.id_categoria = categorias.id_categoria
+LEFT JOIN pelicula_genero ON peliculas.id_pelicula = pelicula_genero.id_pelicula
+LEFT JOIN generos ON pelicula_genero.id_genero = generos.id_genero
+LEFT JOIN pelicula_director ON peliculas.id_pelicula = pelicula_director.id_pelicula
+LEFT JOIN directores ON pelicula_director.id_director = directores.id_director
+GROUP BY peliculas.id_pelicula;
 
-    const [peliculas] = await pool.query("SELECT * FROM peliculas")
-    res.json(peliculas)
+`);
+
+const peliculasConCategoriasYGenerosYDirectores = peliculas.map(pelicula => {
+    const categorias = pelicula.categorias ? pelicula.categorias.split(', ') : []; // convertimos la cadena en un arreglo
+    const generos = pelicula.generos ? pelicula.generos.split(', ') : []; // convertimos la cadena en un arreglo
+    const directores = pelicula.directores ? pelicula.directores.split(', ') : []; // convertimos la cadena en un arreglo
+    delete pelicula.categorias; // eliminamos el atributo categorias del objeto pelicula
+    delete pelicula.generos; // eliminamos el atributo generos del objeto pelicula
+    delete pelicula.directores; // eliminamos el atributo directores del objeto pelicula
+    return { ...pelicula, categorias, generos, directores }; // devolvemos un nuevo objeto con los arreglos de categorías, géneros y directores
+});
+
+res.json(peliculasConCategoriasYGenerosYDirectores);
+
 }
 
 
