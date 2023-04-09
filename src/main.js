@@ -20,7 +20,9 @@ app.use(routerUsuarios)
 app.use(routerResenas)
 app.use(routerPeliculas)
 
-
+app.get('/', (req,res) =>{
+    res.send('App CinePedia Team 14')
+})
 
 app.listen(PORT, ()=>{
     console.log(`:: Server running on port ${PORT} ::`)
