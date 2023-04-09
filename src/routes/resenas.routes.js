@@ -1,14 +1,14 @@
 import { Router } from "express";
-import { createGenero, deleteGenero, getGenero, getGeneros, updateGenero } from "../controllers/generos.controller.js";
+import {getResenas,createResena,getResena,updateResena,deleteResena } from "../controllers/resenias.controller.js";
 
 const router = Router();
 
 
-router.post('/resenas', createGenero)
-router.get('/resenas', getGeneros)
-router.get('/resenas/:id', getGenero)
-router.patch('/resenas/:id', updateGenero)
-router.delete('/resenas/:id', deleteGenero)
+router.post('/resenas', createResena)
+router.get('/resenas', getResenas)
+router.get('/resenas/:id', getResena)
+router.patch('/resenas/:id', updateResena)
+router.delete('/resenas/:id', deleteResena)
 
 
 export default router;
