@@ -5,7 +5,7 @@ import routerCategorias from './routes/categorias.routes.js'
 import routerUsuarios from './routes/usuarios.routes.js'
 import routerResenas from './routes/resenas.routes.js'
 import routerPeliculas from './routes/peliculas.routes.js'
-
+import {PORT} from './config.js'
 const app = express();
 
 
@@ -20,6 +20,6 @@ app.use(routerPeliculas)
 
 
 
-app.listen(3000, ()=>{
-    console.log(':: Server running on port 3000 ::')
+app.listen(PORT, ()=>{
+    console.log(`:: Server running on port ${PORT} ::`)
 })
