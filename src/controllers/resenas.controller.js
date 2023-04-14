@@ -70,20 +70,25 @@ const updateResena = async (req, res) => {
 
 
 const deleteResena = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const resultado = await pool.query("DELETE FROM resenias WHERE id_resenia = ?", [id])
-        if (resultado.affectedRows == 0) return res.status(404).json({
-            message: "Reseña no encontrado",
-        });
-        res.sendStatus(204);
+  try {
+    const { id } = req.params;
+    const resultado = await pool.query("DELETE FROM resenias WHERE id_resenia = ?", [id]);
+
+    if (resultado.affectedRows === 0) {
+      return res.status(404).json({
+        message: "No se encontró la reseña a eliminar",
+      });
     }
-    catch (err) {
-        return res.status(500).json({
-            message: "Algo salio mal",
-        });
-    }
-}
+
+    res.sendStatus(204);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      message: "Ocurrió un error al eliminar la reseña",
+    });
+  }
+};
+
 
 export {
     getResenas,
