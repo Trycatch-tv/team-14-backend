@@ -16,7 +16,7 @@ const createResena = async (req, res) => {
         const { id_usuario, id_pelicula, titulo, puntuacion, comentario } = req.body;
 
         const result = await pool.query(
-            "INSERT INTO generos(id_usuario, id_pelicula, titulo, puntuacion, comentario ) VALUES (?, ?, ?, ?, ?)",
+            "INSERT INTO resenias(id_usuario, id_pelicula, titulo, puntuacion, comentario ) VALUES (?, ?, ?, ?, ?)",
             [id_usuario, id_pelicula, titulo, puntuacion, comentario]
         );
 
