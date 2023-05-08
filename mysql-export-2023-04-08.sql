@@ -70,6 +70,6 @@ ALTER TABLE
 ALTER TABLE
     `pelicula_categoria` ADD CONSTRAINT `pelicula_categoria_id_pelicula_foreign` FOREIGN KEY(`id_pelicula`) REFERENCES `peliculas`(`id_pelicula`);
 ALTER TABLE
-    `reseñas` ADD CONSTRAINT `reseñas_id_pelicula_foreign` FOREIGN KEY(`id_pelicula`) REFERENCES `peliculas`(`id_pelicula`);
+    `resenias` ADD CONSTRAINT `reseñas_id_pelicula_foreign` FOREIGN KEY(`id_pelicula`) REFERENCES `peliculas`(`id_pelicula`);
 ALTER TABLE
     `pelicula_genero` ADD CONSTRAINT `pelicula_genero_id_pelicula_foreign` FOREIGN KEY(`id_pelicula`) REFERENCES `peliculas`(`id_pelicula`);
