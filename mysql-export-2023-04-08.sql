@@ -100,7 +100,7 @@ VALUES
     (17, 'Spike', 'Lee', 'US', '1957-03-19'),
     (18, 'Alejandro', 'González Iñárritu', 'MX', '1963-08-14'),
     (19, 'Guillermo', 'del Toro', 'MX', '1964-10-08'),
-    (20, 'Denis', 'Villeneuve', 'CA', '1967-10-02');
+    (20, 'Denis', 'Villeneuve', 'CA', '1967-10-03');
 
 INSERT INTO `categorias` (`id_categoria`, `nombre`, `descripcion`)
 VALUES
